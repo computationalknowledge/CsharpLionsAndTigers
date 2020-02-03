@@ -6,15 +6,30 @@ namespace _2020._02._03.A
     {
         static void Main(string[] args)
         {
-            Lion L1 = new Lion("Leo");
-            Console.WriteLine("{0} has a strength of {1}", L1.get_Name(), L1.Attack());
+            Console.WriteLine("{0} {1}",  Competition.NumberOfLionWinners, Competition.NumberOfTigerWinners);
+            (new Competition()).DoCompetition();
+            Console.WriteLine("{0} {1}", Competition.NumberOfLionWinners, Competition.NumberOfTigerWinners);
         }
     }
 
-    class Lion
-    {
-        public Lion(String lionName)  { this.Name = lionName;  }
-        private String Name;
+    class Competition
+    {   public static int NumberOfLionWinners = 0;
+        public static int NumberOfTigerWinners = 0;
+        public void DoCompetition()
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                if ((new Tiger()).Attack() > (new Lion()).Attack())
+                {
+                    NumberOfTigerWinners++;
+                }
+                else { NumberOfLionWinners++; }
+            }
+        }
+    }
+    class Feline
+    {   public String Name;
+        
         public Double Attack()
         {
             Random r = new Random(100);
@@ -22,9 +37,14 @@ namespace _2020._02._03.A
                 return r.NextDouble()*100;
         }
         public String get_Name() { return Name; }
+       
+    }
+    class Lion:Feline
+    {
+
     }
 
-    class Tiger
+    class Tiger:Feline
     {
 
     }
