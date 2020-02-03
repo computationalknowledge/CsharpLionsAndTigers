@@ -1,0 +1,31 @@
+using System;
+
+namespace _2020._02._03.A
+{
+    class Jungle
+    {
+        static void Main(string[] args)
+        {
+            Lion L1 = new Lion("Leo");
+            Console.WriteLine("{0} has a strength of {1}", L1.get_Name(), L1.Attack());
+        }
+    }
+
+    class Lion
+    {
+        public Lion(String lionName)  { this.Name = lionName;  }
+        private String Name;
+        public Double Attack()
+        {
+            Random r = new Random(100);
+            // use a Random Number generator to set the Strength
+                return r.NextDouble()*100;
+        }
+        public String get_Name() { return Name; }
+    }
+
+    class Tiger
+    {
+
+    }
+}
